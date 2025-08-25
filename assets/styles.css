@@ -437,7 +437,8 @@ textarea.editor-text {
   background: #ffffff;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   color: #0b4060;
-  white-space: pre-wrap; /* wrap long lines */
+  /* wrap long lines */
+  /*white-space: pre-wrap; */
   overflow: auto; /* scroll when needed */
   word-break: break-word; /* avoid overflow on long tokens */
   min-height: 0; /* allow flex children to not overflow containers */

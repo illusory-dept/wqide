@@ -1,0 +1,28 @@
+{
+  "tutorials": [
+    {
+      "slug": "prelude",
+      "title": "The wq Prelude",
+      "file": "tutorials/basics/prelude.md",
+      "description": "well, please treat me well :)",
+      "section": "Basics",
+      "code": "echo \"hi\""
+    },
+    {
+      "slug": "bindings",
+      "title": "Bindings",
+      "file": "tutorials/basics/bindings.md",
+      "description": "i can remember what you think is important.",
+      "section": "Basics",
+      "code": "hobby:\"daydreaming\""
+    },
+    {
+      "slug": "closures",
+      "title": "Closures",
+      "file": "tutorials/advanced/closures.md",
+      "description": "todo",
+      "section": "Advanced",
+      "code": "todo"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import init, { WqSession, get_help_doc, get_wq_ver } from "./wq.js";
-await init(new URL("./wq_bg.wasm", import.meta.url));
+import init, { WqSession, get_help_doc, get_wq_ver } from "./wq/wq.js";
+await init(new URL("./wq/wq_bg.wasm", import.meta.url));
 
 const codeEl = document.getElementById("code");
 const term = document.getElementById("term");
@@ -18,7 +18,7 @@ function append(chunk) {
 }
 
 function promptPrefix() {
-  return "wq[" + execCounter + "]\n";
+  return "wq[" + execCounter + "] ";
 }
 
 let session = null;
@@ -35,6 +35,7 @@ function ensureSession() {
     }
     session = new WqSession();
     session.set_stdout((chunk) => append(chunk));
+    session.set_stderr((chunk) => append(chunk));
   }
   return session;
 }
@@ -70,12 +71,12 @@ pushStdinBtn.addEventListener("click", () => {
 async function doEval() {
   const code = codeEl.value;
   if (!code.trim()) return;
-  const indented = code
-    .trim()
-    .split("\n")
-    .map((line) => "  " + line) // prepend 2 spaces
-    .join("\n");
-  append(promptPrefix() + indented + "\n");
+  // const indented = code
+  // .trim()
+  // .split("\n")
+  // .map((line) => "  " + line) // prepend 2 spaces
+  // .join("\n");
+  append(promptPrefix() + code.trim() + "\n");
   execCounter++;
   evalBtn.disabled = true;
   try {
@@ -94,26 +95,26 @@ async function doEval() {
     } else if (trimmed === "debug" || trimmed === "\\d") {
       const debug = await ensureSession().set_debug();
       if (debug === true) {
-        append("debug is now on");
+        append("debug is now on\n");
       } else if (debug === false) {
-        append("debug is now off");
+        append("debug is now off\n");
       }
       handled = true;
     } else if (trimmed === "box" || trimmed === "\\b") {
       const box = await ensureSession().set_box_mode();
       if (box === true) {
-        append("box mode is now on");
+        append("box mode is now on\n");
       } else if (box === false) {
-        append("box mode is now off");
+        append("box mode is now off\n");
       }
       handled = true;
     } else if (trimmed === "time" || trimmed === "\\t") {
       if (timeMode === true) {
         timeMode = false;
-        append("time mode is now off");
+        append("time mode is now off\n");
       } else if (timeMode === false) {
         timeMode = true;
-        append("time mode is now on");
+        append("time mode is now on\n");
       }
       handled = true;
     } else if (trimmed.startsWith("help")) {

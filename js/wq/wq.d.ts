@@ -8,6 +8,7 @@ export class WqSession {
   constructor();
   push_stdin(lines: any): void;
   set_stdout(stdout: any): void;
+  set_stderr(stderr: any): void;
   eval(code: string, opts: any): Promise<any>;
   set_debug(): boolean;
   get_env(): string;
@@ -24,6 +25,7 @@ export interface InitOutput {
   readonly wqsession_new: () => number;
   readonly wqsession_push_stdin: (a: number, b: any) => void;
   readonly wqsession_set_stdout: (a: number, b: any) => void;
+  readonly wqsession_set_stderr: (a: number, b: any) => void;
   readonly wqsession_eval: (a: number, b: number, c: number, d: any) => any;
   readonly wqsession_set_debug: (a: number) => number;
   readonly wqsession_get_env: (a: number) => [number, number];
@@ -38,8 +40,8 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
-  readonly closure234_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure251_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure233_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure250_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

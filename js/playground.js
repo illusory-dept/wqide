@@ -1,7 +1,7 @@
 // Hand-rolled editor with line numbers and a toolbar
 
-import init, { run_wasm } from "./wq.js";
-await init(new URL("./wq_bg.wasm", import.meta.url));
+import init, { run_wasm } from "./wq/wq.js";
+await init(new URL("./wq/wq_bg.wasm", import.meta.url));
 
 const ta = document.querySelector("textarea.editor-text");
 const gutter = document.querySelector(".gutter");

@@ -348,6 +348,7 @@ body {
   cursor: pointer;
   background: hotpink;
   color: white;
+  /*text-wrap: nowrap;*/
   /*box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12) inset;*/
 }
 .toolbar .btn.primary {
@@ -445,9 +446,9 @@ textarea.editor-text {
   max-height: 400px;
   border-radius: 0 0 14px 14px;
 }
-.run-output:empty {
+/*.run-output:empty {
   display: none;
-}
+}*/
 .info-doc {
   background: white;
   border: 1px solid #cfe6f6;

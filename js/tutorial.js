@@ -1,8 +1,8 @@
 // Build outline from headings, scrollspy, and copy-to-clipboard buttons
 // after article content is injected.
 
-import init, { run_wasm } from "./wq.js";
-await init(new URL("./wq_bg.wasm", import.meta.url));
+import init, { run_wasm } from "./wq/wq.js";
+await init(new URL("./wq/wq_bg.wasm", import.meta.url));
 
 window.initTutorialUI = function initTutorialUI() {
   const article = document.querySelector(".article");

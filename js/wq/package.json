@@ -1,0 +1,21 @@
+{
+  "name": "wq",
+  "type": "module",
+  "description": "The wq programming language",
+  "version": "0.7.0-a2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/illusory-dept/wq"
+  },
+  "files": [
+    "wq_bg.wasm",
+    "wq.js",
+    "wq.d.ts"
+  ],
+  "main": "wq.js",
+  "types": "wq.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

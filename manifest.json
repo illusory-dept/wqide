@@ -4,7 +4,7 @@
       "slug": "prelude",
       "title": "The wq Prelude",
       "file": "tutorials/basics/prelude.md",
-      "description": "well, please treat me well :)",
+      "description": "talk with wq for the first time",
       "section": "Basics",
       "code": "echo \"hi\""
     },
@@ -12,7 +12,7 @@
       "slug": "bindings",
       "title": "Bindings",
       "file": "tutorials/basics/bindings.md",
-      "description": "i can remember what you think is important.",
+      "description": "make wq remember what is important",
       "section": "Basics",
       "code": "hobby:\"daydreaming\""
     },

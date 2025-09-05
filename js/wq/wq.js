@@ -150,21 +150,18 @@ export function run_wasm(code, opts) {
 }
 
 /**
- * @param {string} name
  * @returns {string}
  */
-export function get_help_doc(name) {
-    let deferred2_0;
-    let deferred2_1;
+export function get_help_doc() {
+    let deferred1_0;
+    let deferred1_1;
     try {
-        const ptr0 = passStringToWasm0(name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.get_help_doc(ptr0, len0);
-        deferred2_0 = ret[0];
-        deferred2_1 = ret[1];
+        const ret = wasm.get_help_doc();
+        deferred1_0 = ret[0];
+        deferred1_1 = ret[1];
         return getStringFromWasm0(ret[0], ret[1]);
     } finally {
-        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
     }
 }
 
@@ -184,12 +181,44 @@ export function get_wq_ver() {
     }
 }
 
-function __wbg_adapter_22(arg0, arg1, arg2) {
-    wasm.closure233_externref_shim(arg0, arg1, arg2);
+/**
+ * @returns {string}
+ */
+export function get_builtins() {
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        const ret = wasm.get_builtins();
+        deferred1_0 = ret[0];
+        deferred1_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
+    }
 }
 
-function __wbg_adapter_55(arg0, arg1, arg2, arg3) {
-    wasm.closure250_externref_shim(arg0, arg1, arg2, arg3);
+/**
+ * @returns {string}
+ */
+export function get_err_codes() {
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        const ret = wasm.get_err_codes();
+        deferred1_0 = ret[0];
+        deferred1_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
+    }
+}
+
+function __wbg_adapter_22(arg0, arg1, arg2) {
+    wasm.closure280_externref_shim(arg0, arg1, arg2);
+}
+
+function __wbg_adapter_57(arg0, arg1, arg2, arg3) {
+    wasm.closure297_externref_shim(arg0, arg1, arg2, arg3);
 }
 
 const WqSessionFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -245,11 +274,12 @@ export class WqSession {
         return ret;
     }
     /**
-     * @returns {boolean}
+     * @param {number} n
+     * @returns {number}
      */
-    set_debug() {
-        const ret = wasm.wqsession_set_debug(this.__wbg_ptr);
-        return ret !== 0;
+    set_debug(n) {
+        const ret = wasm.wqsession_set_debug(this.__wbg_ptr, n);
+        return ret;
     }
     /**
      * @returns {string}
@@ -356,7 +386,7 @@ function __wbg_get_imports() {
                 const a = state0.a;
                 state0.a = 0;
                 try {
-                    return __wbg_adapter_55(a, state0.b, arg0, arg1);
+                    return __wbg_adapter_57(a, state0.b, arg0, arg1);
                 } finally {
                     state0.a = a;
                 }
@@ -415,8 +445,8 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper790 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 234, __wbg_adapter_22);
+    imports.wbg.__wbindgen_closure_wrapper796 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 281, __wbg_adapter_22);
         return ret;
     };
     imports.wbg.__wbindgen_init_externref_table = function() {

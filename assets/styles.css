@@ -141,8 +141,8 @@ body {
 }
 
 .wrap {
-  max-width: var(--maxw);
-  margin: 34px auto 60px;
+  /*max-width: var(--maxw);*/
+  margin: 48px;
   padding: 0 20px;
 }
 .divider {

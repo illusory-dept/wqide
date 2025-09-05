@@ -18,11 +18,11 @@ echo(pair+(10;10))
 
 ## naming rules
 
-* letters, digits, underscores, question marks are okay: `score`, `max_speed`, `a2`, `correct?`
-* don’t start with a digit: `2bad` is not a name (because it confuses me).
+* letters, digits, underscores, question marks are accepted: `score`, `max_speed`, `a2`, `correct?`
+* don’t start with a digit: `2bad` confuses me.
 * don't start with a question mark either.
 * names are case‑sensitive: `Total` and `total` are different.
-* i reserve some names (*builtins*) like `sum`, which you can't use for your own bindings. enter `help builtins` in the REPL to see all those special names!
+* some names (*builtins*) like `sum` are reserved, and you can't use them for your own bindings. enter `!bfn` in the REPL to see all those special names.
 
 ## rebinding
 
@@ -39,15 +39,13 @@ echo x
 
 ## expressions
 
-i treat **everything** as an *expression*. that means **everything** evaluates to some value!
+i treat **everything** as an *expression*. that means **everything** evaluates to some value.
 
 just like how `1+2` evaluates to 3, `a:1` not only binds `a` to `1`, the expression (`a:1`) itself also evaluates to 1.
 
 ```wq
 echo(a:1)
 ```
-
-try hitting that run button!
 
 ## chaining bindings
 
@@ -63,4 +61,4 @@ explanation: `b:1` happens first (binding `1` to `b` and evaluating to `1`), the
 
 ## tiny practice
 
-no homework today!!
+no homework today

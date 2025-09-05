@@ -1,8 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 export function run_wasm(code: string, opts: any): Promise<any>;
-export function get_help_doc(name: string): string;
+export function get_help_doc(): string;
 export function get_wq_ver(): string;
+export function get_builtins(): string;
+export function get_err_codes(): string;
 export class WqSession {
   free(): void;
   constructor();
@@ -10,7 +12,7 @@ export class WqSession {
   set_stdout(stdout: any): void;
   set_stderr(stderr: any): void;
   eval(code: string, opts: any): Promise<any>;
-  set_debug(): boolean;
+  set_debug(n: number): number;
   get_env(): string;
   clear_env(): void;
   set_box_mode(): boolean;
@@ -27,12 +29,14 @@ export interface InitOutput {
   readonly wqsession_set_stdout: (a: number, b: any) => void;
   readonly wqsession_set_stderr: (a: number, b: any) => void;
   readonly wqsession_eval: (a: number, b: number, c: number, d: any) => any;
-  readonly wqsession_set_debug: (a: number) => number;
+  readonly wqsession_set_debug: (a: number, b: number) => number;
   readonly wqsession_get_env: (a: number) => [number, number];
   readonly wqsession_clear_env: (a: number) => void;
   readonly wqsession_set_box_mode: (a: number) => number;
-  readonly get_help_doc: (a: number, b: number) => [number, number];
+  readonly get_help_doc: () => [number, number];
   readonly get_wq_ver: () => [number, number];
+  readonly get_builtins: () => [number, number];
+  readonly get_err_codes: () => [number, number];
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
@@ -40,8 +44,8 @@ export interface InitOutput {
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __wbindgen_free: (a: number, b: number, c: number) => void;
-  readonly closure233_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure250_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure280_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure297_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

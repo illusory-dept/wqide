@@ -1,26 +1,22 @@
 # The wq Prelude
 
-hey. allow me to introduce myself.
+hello.
 
-i might be immature, maybe a toy to some, but i promise we’ll have fun and get things done.
+here's a tiny thing you can try right now:
 
-coming right away: a tiny thing you can enter to say hi to me.
-
-## bff `echo`
+## bfn `echo`
 
 ```wq
 echo "hello!"
 ```
 
-that’s how we talk, put anything after `echo` with a blank space in between, and i'll show it back to you. neat!
+just put anything after `echo`, and i'll show it back to you.
 
 ### REPL note
 
-in the REPL (i also call it the "conversation mode") you don’t always need `echo`: just type an expression and i’ll print its result for you. BUT, enter only one expression at a time - i only show the last one’s result.
+in the REPL, you don’t always need `echo`: just type an expression and i’ll print its result for you. but, enter only ONE expression at a time - i only show the last one’s result.
 
-## here come the numbers
-
-fun warmups! try clicking the "Run" button. btw, `^` is exponent. i’m not like python‑chan, who makes you type "**" for no good reason.
+## numbers
 
 ```wq
 2*3+4
@@ -40,7 +36,7 @@ fun warmups! try clicking the "Run" button. btw, `^` is exponent. i’m not like
 
 i care about *priorities*. `^` comes first, then negation `-` (as in `-5`), then `*` and `/`, then `+` and `-`.
 
-try mixing operations and parens and see what happens!
+try mixing operations and parens and see what happens.
 
 ## lists - think in groups
 
@@ -52,7 +48,7 @@ i call ordered collections **lists**. write them with parentheses and semicolons
 
 semicolon separates elements; parentheses group them.
 
-you can nest lists like this:
+nest lists like this:
 
 ```wq
 (1;(2;3))
@@ -66,7 +62,7 @@ you can nest lists like this:
 
 so, what if you add two lists?
 
-python-chan simply glues (*concatenates*) them:
+python-chan glues (*concatenates*) them:
 
 ```python
 [1,2,3] + [4,5,6]  # => [1,2,3,4,5,6]
@@ -80,9 +76,9 @@ but, i treat lists like numbers that can pair up:
 // i ignore comments. useful for taking notes!
 ```
 
-* want me to glue lists? put a comma `,` between two lists and see what happens!
+* want me to glue lists? put a comma `,` between two lists and see what happens.
 
-* what if list lengths don’t match? try it! (spoilers: i call the behavior broadcasting, which we’ll get to later.)
+* what if list lengths don’t match? try it.
 
 ## quick rules to remember
 

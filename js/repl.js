@@ -1,4 +1,10 @@
-import init, { WqSession, get_help_doc, get_wq_ver } from "./wq/wq.js";
+import init, {
+  WqSession,
+  get_help_doc,
+  get_wq_ver,
+  get_builtins,
+  get_err_codes,
+} from "./wq/wq.js";
 await init(new URL("./wq/wq_bg.wasm", import.meta.url));
 
 const codeEl = document.getElementById("code");
@@ -43,7 +49,7 @@ function ensureSession() {
 function resetSession() {
   session = null;
   ensureSession();
-  append(`wq ${wq_version} (c) tttiw (l) mit | help\n`);
+  append(`wq ${wq_version} (c)tttiw (l)mit | !help\n`);
 }
 
 resetBtn.addEventListener("click", () => {
@@ -84,21 +90,19 @@ async function doEval() {
     const trimmed = code.trim();
 
     let handled = false;
-    if (trimmed === "vars" || trimmed === "\\v") {
+    if (trimmed === "!g") {
       const handledResult = await ensureSession().get_env();
       append(handledResult + "\n");
       handled = true;
-    } else if (trimmed === "clear" || trimmed === "\\c") {
+    } else if (trimmed === "!r") {
       await ensureSession().clear_env();
       append("user-defined bindings cleared\n");
       handled = true;
-    } else if (trimmed === "debug" || trimmed === "\\d") {
-      const debug = await ensureSession().set_debug();
-      if (debug === true) {
-        append("debug is now on\n");
-      } else if (debug === false) {
-        append("debug is now off\n");
-      }
+    } else if (trimmed.startsWith("!d")) {
+      const arg = trimmed.slice(2).trim();
+      const level = Number(arg);
+      const debug = await ensureSession().set_debug(arg);
+      append(`debug level is now ${debug}\n`);
       handled = true;
     } else if (trimmed === "box" || trimmed === "\\b") {
       const box = await ensureSession().set_box_mode();
@@ -108,7 +112,7 @@ async function doEval() {
         append("box mode is now off\n");
       }
       handled = true;
-    } else if (trimmed === "time" || trimmed === "\\t") {
+    } else if (trimmed === "!t") {
       if (timeMode === true) {
         timeMode = false;
         append("time mode is now off\n");
@@ -117,15 +121,17 @@ async function doEval() {
         append("time mode is now on\n");
       }
       handled = true;
-    } else if (trimmed.startsWith("help")) {
-      const arg = trimmed.slice(4).trim();
-      const helpdoc = get_help_doc(arg);
+    } else if (trimmed.startsWith("!h")) {
+      const helpdoc = get_help_doc();
       append(helpdoc + "\n");
       handled = true;
-    } else if (trimmed.startsWith("\\h")) {
-      const arg = trimmed.slice(2).trim();
-      const helpdoc = get_help_doc(arg);
-      append(helpdoc + "\n");
+    } else if (trimmed === "!bfn") {
+      const builtins = get_builtins();
+      append(builtins + "\n");
+      handled = true;
+    } else if (trimmed === "!err") {
+      const errcodes = get_err_codes();
+      append(errcodes + "\n");
       handled = true;
     }
 
@@ -167,7 +173,7 @@ async function doEval() {
     // auto-clear input after successful eval
     codeEl.value = "";
   } catch (err) {
-    console.error(err);
+    console.error("err from wq:" + err);
     append((err?.message ?? String(err)) + "\n");
   } finally {
     evalBtn.disabled = false;
